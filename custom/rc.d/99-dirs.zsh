@@ -1,16 +1,18 @@
-function g()
-{
-  local dir=$(\ls ~/.g/ | fzf -1 -0 -q "$*")
+if [ -d ~/.g ]; then
+  function g()
+  {
+    local dir=$(\ls ~/.g/ | fzf -1 -0 -q "$*")
 
-  if [ -n "$dir" ]; then
-    dir=$(cd ~/.g/"$dir";pwd -P)
-    echo changing to $dir
-    echo
+    if [ -n "$dir" ]; then
+      dir=$(cd ~/.g/"$dir";pwd -P)
+      echo changing to $dir
+      echo
 
-    cd $dir
-    _ruby_setup
-  fi
-}
+      cd $dir
+      _ruby_setup
+    fi
+  }
+fi
 
 # remember last CD directory
 function mm() { pwd > ~/.last_dir }
