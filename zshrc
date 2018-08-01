@@ -1,0 +1,1 @@
+templates/zshrc.zsh-template
